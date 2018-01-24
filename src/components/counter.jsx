@@ -32,9 +32,7 @@ export default class App extends React.Component {
     incrementAsync = ()=> {
         const number = this.select.value*1
 
-        setTimeout(()=>{
-            this.props.increment(number)
-        },1000)
+        this.props.incrementAsync(number)
     }
 
     render() {
