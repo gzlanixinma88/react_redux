@@ -1,16 +1,15 @@
-// import {} from '../constents/ActionTypes'
 
-import {INCREMENT, DECREMENT} from './action-types'
+import {ADD_COMMENT, DELETE_COMMENT, RECEIVE_COMMENTS} from './action-types'
 
-
-export function counter(state = 0, action) {
-
-    console.log('counter()', state, action)
+const iniComment =[]
+export function comments(state=iniComment, action) {
     switch (action.type){
-        case INCREMENT:
-            return state + action.data
-        case DECREMENT:
-            return state - action.data
+        case ADD_COMMENT:
+            return [action.data, ...state]
+        case DELETE_COMMENT:
+            return state.filter((comment,index)=>index !== action.data)
+        case RECEIVE_COMMENTS:
+            return action.data
         default:
             return state
     }
